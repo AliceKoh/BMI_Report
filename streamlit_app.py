@@ -66,7 +66,7 @@ st.text("")
 st.text("")
 
 #--Calculate BMI-------------------------------------------------------
-
+Report = False
 st.subheader("BMI Calculator - Please input your weight and height.")
 c1,c2,c3=st.columns([4,0.5,2])
 with c1:
@@ -74,7 +74,7 @@ with c1:
     st.image(img,use_column_width=True)
 with c2:
     st.text("")
-with c3:
+with c3:    
     state.WEIGHT = st.number_input("Enter Weight (kg)",min_value=1.0, max_value=150.0, value=state.WEIGHT, step=0.5, on_change=_set_values_cb, key='weight')
     state.HEIGHT = st.number_input('Enter height (m)', min_value=0.8, max_value=2.5, value=state.HEIGHT, step=0.1, on_change=_set_values_cb, key='height')
     if st.button("Calculate"):
@@ -83,8 +83,9 @@ with c3:
             pass
         else:
             BMI = round(state.WEIGHT/(state.HEIGHT**2), 1)
-            st.success(f"Your BMI is {BMI}")    
+            st.markdown("Your BMI Report generated") #f"Your BMI is {BMI}"
             df=pd.DataFrame({"fullname":fname,"fmood":mood,"weightkg":state.WEIGHT,"heightm":state.HEIGHT,"BMIc":BMI}, index=[0])
+            Report = True
 
 #--BMI Classification------------------------------------------------
 
@@ -116,7 +117,8 @@ for i in index_img:
 
 #--Report----------------------------------------------------------------------
 
-if state.HEIGHT > 1:
+if Report == True:
+#if state.HEIGHT > 1:
     #Greeting
     if fname == "":
         fname = "Stranger"
@@ -146,12 +148,32 @@ if state.HEIGHT > 1:
 
         Rpt_result =f'<p style="font-family:Arial;color:black;font-size:18px;"> Generally you are categorized as {level}. Looks like your health management {result}. {action}." </p>'
         st.markdown(Rpt_result,unsafe_allow_html=True)
+    
+    st.text("""
 
-    #General Information
-    img = Image.open("ImageGeneral.jpg")
+        """)
+
+    #General Information-----------------------------------------------------------
+
+    st.subheader("General Guildline to Better Health")
+    img = Image.open("ImageG1.jpg")
+    st.image(img,use_column_width=True) 
+    img = Image.open("ImageG2.jpg")
     st.image(img,use_column_width=True)
 
+
+    #col1,col2=st.columns([3,3])
+    #with col1:
+    #    img = Image.open("ImageG1.jpg")
+    #   st.image(img,use_column_width=True) 
+    #with col2:
+    #    img = Image.open("ImageG2.jpg")
+    #    st.image(img,use_column_width=True)
+
+    #img = Image.open("ImageGen.jpg")
+    #st.image(img,use_column_width=True)
     
+
     #--Feedback------------------------------------------------
 
     st.subheader("Feedback and Wish List")
@@ -161,7 +183,7 @@ if state.HEIGHT > 1:
 
         """) 
 
-    st.markdown('<a href="mailto:alice.python21@gmail.com">Sent feedback to this email !</a>', unsafe_allow_html=True)
+    st.markdown('<a href="mailto:alice.python21@gmail.com">Click to Sent feedback</a>', unsafe_allow_html=True)
 
     st.markdown("")
     img = Image.open("signature.jpg")
