@@ -83,7 +83,7 @@ with c3:
             pass
         else:
             BMI = round(state.WEIGHT/(state.HEIGHT**2), 1)
-            st.markdown("Your BMI Report generated") #f"Your BMI is {BMI}"
+            st.markdown("Your BMI Report is generated") #f"Your BMI is {BMI}"
             df=pd.DataFrame({"fullname":fname,"fmood":mood,"weightkg":state.WEIGHT,"heightm":state.HEIGHT,"BMIc":BMI}, index=[0])
             Report = True
 
@@ -118,7 +118,7 @@ for i in index_img:
 #--Report----------------------------------------------------------------------
 
 if Report == True:
-#if state.HEIGHT > 1:
+
     #Greeting
     if fname == "":
         fname = "Stranger"
@@ -127,7 +127,7 @@ if Report == True:
         fname = fname
 
     if BMI == 1:
-        BMI = " ...☝️click calculate button "
+        BMI = " ...☝️click to calculate button "
     else:
         BMI = BMI
 
@@ -155,22 +155,23 @@ if Report == True:
 
     #General Information-----------------------------------------------------------
 
-    #st.subheader("General Guildline to Better Health")
-    #img = Image.open("ImageG1.jpg")
-    #st.image(img,use_column_width=True) 
-    #img = Image.open("ImageG2.jpg")
-    #st.image(img,use_column_width=True)
+    st.subheader("General Guildline to Better Health")
     Rpt_text ='<p style="font-family:Arial;color:black;font-size:18px;"> BMI is a nice simple tool to gage your general health. It is not a diagnostic tool and does not apply to pregnant woman, youth below 18, elderly nor muscular athletes. Below is the general guild to your health.</p>'
     st.markdown(Rpt_text,unsafe_allow_html=True)
 
     col1,col2=st.columns([2,1])
     with col1:
+        st.text("")
         img = Image.open("General.jpg")
         st.image(img,use_column_width=True)
     with col2:
         img = Image.open("ImageFood2.jpg")
         st.image(img,use_column_width=True)
+        img = Image.open("ImageBalance.jpg")
+        st.image(img,use_column_width=True)
    
+    
+
 
     #--Feedback------------------------------------------------
 
