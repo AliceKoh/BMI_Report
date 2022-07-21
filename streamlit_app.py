@@ -155,24 +155,22 @@ if Report == True:
 
     #General Information-----------------------------------------------------------
 
-    st.subheader("General Guildline to Better Health")
-    img = Image.open("ImageG1.jpg")
-    st.image(img,use_column_width=True) 
-    img = Image.open("ImageG2.jpg")
-    st.image(img,use_column_width=True)
-
-
-    #col1,col2=st.columns([3,3])
-    #with col1:
-    #    img = Image.open("ImageG1.jpg")
-    #   st.image(img,use_column_width=True) 
-    #with col2:
-    #    img = Image.open("ImageG2.jpg")
-    #    st.image(img,use_column_width=True)
-
-    #img = Image.open("ImageGen.jpg")
+    #st.subheader("General Guildline to Better Health")
+    #img = Image.open("ImageG1.jpg")
+    #st.image(img,use_column_width=True) 
+    #img = Image.open("ImageG2.jpg")
     #st.image(img,use_column_width=True)
-    
+    Rpt_text ='<p style="font-family:Arial;color:black;font-size:18px;"> BMI is a nice simple tool to gage your general health. It is not a diagnostic tool and does not apply to pregnant woman, youth below 18, elderly nor muscular athletes. Below is the general guild to your health.</p>'
+    st.markdown(Rpt_text,unsafe_allow_html=True)
+
+    col1,col2=st.columns([2,1])
+    with col1:
+        img = Image.open("General.jpg")
+        st.image(img,use_column_width=True)
+    with col2:
+        img = Image.open("ImageFood2.jpg")
+        st.image(img,use_column_width=True)
+   
 
     #--Feedback------------------------------------------------
 
